@@ -20,27 +20,23 @@ body {
   <div id="days">00</div>
   <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
 <script type="text/javascript">
-  var start = new Date("May 26, 2020 00:00:00");
+  var start = new Date("May 27, 2020 00:00:00");
   update();
   window.setInterval(function(){ update(); }, 1000);
 
 function update() {
   var now = new Date();
-  var msec = now - start;
-  var dd = Math.floor(msec / 1000 / 60 / 60 / 24);
-  msec -= dd * 1000 * 60 * 60 * 24;
-  var hh = Math.floor(msec / 1000 / 60 / 60);
-  msec -= hh * 1000 * 60 * 60;
-  var mm = Math.floor(msec / 1000 / 60);
-  msec -= mm * 1000 * 60;
-  var ss = Math.floor(msec / 1000);
-  msec -= ss * 1000;
+  var t = Math.floor((now - start) / 1000);
+  document.getElementById('seconds').innerHTML = format2d(t % 60);
+  t = Math.floor(t/60);
+  document.getElementById('minutes').innerHTML = format2d(t % 60);
+  t = Math.floor(t/60);
+  document.getElementById('hours').innerHTML = format2d(t % 24);
+  document.getElementById('days').innerHTML = Math.floor(t / 24);
+}
 
-  console.log(msec);
-  document.getElementById('days').innerHTML = dd;
-  document.getElementById('hours').innerHTML = hh.toString().padStart(2, "0");
-  document.getElementById('minutes').innerHTML = mm.toString().padStart(2, "0");
-  document.getElementById('seconds').innerHTML = ss.toString().padStart(2, "0");
+function format2d(t) {
+  return t.toString().padStart(2, "0");
 }
 
 </script>
