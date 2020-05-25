@@ -17,8 +17,8 @@ body {
 </style>
 </head>
 <body>
-  <div id="days">00</div>
-  <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+  <div id="days"></div>
+  <div id="time"></div>
 <script type="text/javascript">
   var start = new Date("May 27, 2020 00:00:00");
   update();
@@ -27,11 +27,12 @@ body {
 function update() {
   var now = new Date();
   var t = Math.floor((now - start) / 1000);
-  document.getElementById('seconds').innerHTML = format2d(t % 60);
+  var ss = format2d(t % 60);
   t = Math.floor(t/60);
-  document.getElementById('minutes').innerHTML = format2d(t % 60);
+  var mm = format2d(t % 60);
   t = Math.floor(t/60);
-  document.getElementById('hours').innerHTML = format2d(t % 24);
+  var hh = format2d(t % 24);
+  document.getElementById('time').innerHTML = hh + ":" + mm + ":" + ss;
   document.getElementById('days').innerHTML = Math.floor(t / 24);
 }
 
