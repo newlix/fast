@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>fast</title>
 	<style>
 
 body {
@@ -14,7 +14,7 @@ body {
   font-size: 500px;
 }
 
-</style>
+  </style>
 </head>
 <body>
   <div id="days"></div>
@@ -22,7 +22,7 @@ body {
 <script type="text/javascript">
   var start = new Date("May 27, 2020 00:00:00");
   update();
-  window.setInterval(function(){ update(); }, 1000);
+  window.setInterval(update, 1000);
 
 function update() {
   var now = new Date();
