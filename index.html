@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fast</title>
+	<style>
+
+body {
+  text-align: center;
+  font-size: 100px;
+  font-family: "monaco";
+}
+
+#days {
+  font-size: 500px;
+}
+
+  </style>
+</head>
+<body>
+  <div id="days"></div>
+  <div id="time"></div>
+<script type="text/javascript">
+  var start = new Date("May 25, 2021 00:00:00");
+  update();
+  window.setInterval(update, 1000);
+
+function update() {
+  var now = new Date();
+  var t = Math.floor((now - start) / 1000);
+  var ss = format2d(t % 60);
+  t = Math.floor(t/60);
+  var mm = format2d(t % 60);
+  t = Math.floor(t/60);
+  var hh = format2d(t % 24);
+  document.getElementById('time').innerHTML = hh + ":" + mm + ":" + ss;
+  document.getElementById('days').innerHTML = Math.floor(t / 24);
+}
+
+function format2d(t) {
+  return t.toString().padStart(2, "0");
+}
+
+</script>
+</body>
+</html>
